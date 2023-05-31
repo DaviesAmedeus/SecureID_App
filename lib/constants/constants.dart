@@ -17,7 +17,7 @@ const kDefaultTextStyle = TextStyle(
 );
 
 /// Colors
-const kGreenColor = Colors.green;
+const kGreenColor = Color.fromARGB(255,1, 217, 94);
 const kPaleWhiteColor = Colors.white70;
-const kBlackColor = Colors.black;
+const kBlackColor = Color.fromARGB(255, 20, 20, 22);
 const kPaleBlackColor = Color.fromARGB(200, 52, 51, 56);

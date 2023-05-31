@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:secure_id_app/constants/constants.dart';
-import 'package:secure_id_app/screens/get_started_screen.dart';
+import 'package:secure_id_app/screens/login_screen.dart';
 import 'package:secure_id_app/screens/home_screen.dart';
 
 void main() {
@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: kBlackColor
+
+        scaffoldBackgroundColor: kBlackColor,
+        primarySwatch: Colors.green
       ),
       initialRoute: GetStartedScreen.id,
       routes: {
