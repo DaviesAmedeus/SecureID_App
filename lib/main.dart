@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:secure_id_app/constants/constants.dart';
 import 'package:secure_id_app/screens/login_screen.dart';
-import 'package:secure_id_app/screens/home_screen.dart';
+import 'package:secure_id_app/screens/staff_home_screen.dart';
+import 'package:secure_id_app/screens/student_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       initialRoute: GetStartedScreen.id,
       routes: {
         GetStartedScreen.id: (context) => GetStartedScreen(),
-        HomeScreen.id: (context) => const HomeScreen()
+        StudentHomeScreen.id: (context) => const StudentHomeScreen(),
+        StaffHomeScreen.id: (context)=> const StaffHomeScreen()
       },
     );
   }

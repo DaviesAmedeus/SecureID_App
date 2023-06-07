@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:secure_id_app/api/api_services.dart';
 import 'package:secure_id_app/constants/constants.dart';
+import 'package:secure_id_app/screens/staff_home_screen.dart';
+import 'package:secure_id_app/screens/student_home_screen.dart';
 
 class GetStartedScreen extends StatefulWidget {
   static String id = '/getStartedScreen';
@@ -170,10 +172,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                          shape: RoundedRectangleBorder(
                              borderRadius: BorderRadius.circular(40)),
                          onPressed: () {
-                           if(_validate()){
-                             _submit();
-                           };
-                           
+                           // if(_validate()){
+                           //   _submit();
+                           // };
+                           // Navigator.pushNamed(context, StudentHomeScreen.id);
+                           Navigator.pushNamed(context, StaffHomeScreen.id);
+
                          },
                          child: const Text(
                            'Login',
