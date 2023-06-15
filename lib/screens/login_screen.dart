@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:secure_id_app/api/api_services.dart';
 import 'package:secure_id_app/constants/constants.dart';
@@ -172,11 +174,12 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
                          shape: RoundedRectangleBorder(
                              borderRadius: BorderRadius.circular(40)),
                          onPressed: () {
-                           // if(_validate()){
-                           //   _submit();
-                           // };
+                           if(_validate()){
+                             _submit();
+                           };
+
                            // Navigator.pushNamed(context, StudentHomeScreen.id);
-                           Navigator.pushNamed(context, StaffHomeScreen.id);
+                           // Navigator.pushNamed(context, StaffHomeScreen.id);
 
                          },
                          child: const Text(
@@ -214,7 +217,16 @@ class _GetStartedScreenState extends State<GetStartedScreen> {
       'password': userPasswordController.text
     };
 
-   await apiServices!.login(data);
+   var res = await ApiServices().authenticationPostRequest(data, 'api/login');
+
+   if(res != null){
+     var body = json.decode(res.body);
+
+     print('--------------------TOKEN----------------------------');
+     print(body['token']);
+     print('--------------------TOKEN----------------------------');
+
+   }
 
 
 
