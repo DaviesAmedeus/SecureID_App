@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: GetStartedScreen.id,
       routes: {
-        GetStartedScreen.id: (context) => GetStartedScreen(),
-        StudentHomeScreen.id: (context) => const StudentHomeScreen(),
+        GetStartedScreen.id: (context) => const GetStartedScreen(),
+        // StudentHomeScreen.id: (context) => const StudentHomeScreen(),
         StaffHomeScreen.id: (context)=> const StaffHomeScreen()
       },
     );

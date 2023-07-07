@@ -44,7 +44,7 @@ class StaffHomeScreen extends StatelessWidget {
                   width: 300,
                   height: 240,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(67, 81, 79, 86),
+                    color: const Color.fromARGB(67, 81, 79, 86),
                     // color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: const [
@@ -58,23 +58,23 @@ class StaffHomeScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         '[ Staff Name ] ',
                         style: TextStyle(fontSize: 23, color: kPaleWhiteColor),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 23),
                         child: Text(
                             'This postal helps you to verify students by securing their QR code. Tap to scan!',
                             style: TextStyle(fontSize: 20, color: kPaleWhiteColor)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       CircleAvatar(
@@ -90,7 +90,7 @@ class StaffHomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                     ],
