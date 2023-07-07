@@ -10,8 +10,6 @@ class StudentHomeScreen extends StatefulWidget {
 
   String? username, password, token;
 
-
-
   StudentHomeScreen({this.username, this.password, this.token});
 
   @override
@@ -89,7 +87,6 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                 onTap: () {
                                   fetchStudentInfo(context);
                                   // _view_ID_Dialog(context);
-
                                 },
                                 child: const Icon(
                                   Icons.visibility,
@@ -177,242 +174,321 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
   ///---- DIALOG FUNCTIONS -------
 
-  void _view_ID_FrontSideDialog(BuildContext context, var student_credentials) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
+  void _view_ID_Dialog(BuildContext context, var student_credentials) {
+    isFrontSide == true
+        ? showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                // title: Text('Identity Card'),
+                content: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      // color: Colors.black,
+                      child: Center(
+                        child: Column(children: [
+                          OurIdText(
+                            title: 'NATIONAL INSTITUTE OF TRANSPORT',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'STUDENT IDENTITY CARD',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Image.asset(
+                            'images/IMG-20221231-WA0009_1.jpg',
+                            scale: 3,
+                          ),
+                        ]),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      // color: Colors.black,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          OurIdText(
+                            title: 'Programme:',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          OurIdText(
+                            title: '${student_credentials['programme']}',
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'Name:',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          OurIdText(
+                            title: '${student_credentials['name']}',
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'Registration Number:',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          OurIdText(
+                            title: '${student_credentials['student_code']}',
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'Signature:',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          OurIdText(
+                            title: '${student_credentials['signature']}',
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'Exp_Date:',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          OurIdText(
+                            title: '${student_credentials['exp_date']}',
+                            textAlign: TextAlign.start,
+                            color: Colors.pinkAccent,
+                          ),
 
-
-            // title: Text('Identity Card'),
-            content: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 250,
-                  // color: Colors.black,
-                  child: Center(
-                    child: Column(children: [
-                      OurIdText(
-                        title: 'NATIONAL INSTITUTE OF TRANSPORT', fontWeight: FontWeight.bold, textAlign: TextAlign.center,
+                        ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      OurIdText(
-                        title: 'STUDENT IDENTITY CARD', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Image.asset(
-                        'images/IMG-20221231-WA0009_1.jpg',
-                        scale: 3,
-                      ),
-                    ]),
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  width: double.infinity,
-                  height: 250,
-                  // color: Colors.black,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      OurIdText(
-                        title: 'Programme:', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '${student_credentials['programme']}',  textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Name:', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '${student_credentials['name']}',  textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Registration Number:', fontWeight: FontWeight.bold,  textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '${student_credentials['student_code']}',  textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Signature:', fontWeight: FontWeight.bold,  textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '${student_credentials['signature']}',  textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Exp_Date:', fontWeight: FontWeight.bold,  textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '${student_credentials['exp_date']}',  textAlign: TextAlign.start, color: Colors.pinkAccent,
-                      ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      if (isFrontSide == true) {
+                        isFrontSide = !isFrontSide;
+                        print('???????????????????? $isFrontSide ?????????');
 
-                      // Text('REG#: ${student_credentials['student_code']}'),
-                      // Text('Signature: ${student_credentials['signature']}'),
-                      // Text('EXP DATE: ${student_credentials['signature']}'),
-                    ],
+                        setState(() {
+                          Navigator.pop(context);
+                          _view_ID_Dialog(context, outside_boy);
+                        });
+                      }
+                    },
+                    child: const Text('View Back'),
                   ),
-                ),
-              ],
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  print('+++++++++++++FRONT SIDE TURNED+++++++++++++++++++++');
-                  print(isFrontSide);
-                  print('++++++++++++++++++++++++++++++++++');
-
-                  if(isFrontSide == true){
-                    setState(() {
-                      isFrontSide = !isFrontSide;
-                    });
-                    _view_ID_BackSideDialog(context);
-                  }
-                  print('+++++++++++++FRONT SIDE TURNED+++++++++++++++++++++');
-                  print(isFrontSide);
-                  print('++++++++++++++++++++++++++++++++++');
-                  Navigator.pop(context);
-
-
-                },
-                child: const Text('View Back'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Perform printing action
-                  Navigator.pop(context);
-                },
-                child: const Text('Print'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Perform cancel action
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        });
-  }
-
-  void _view_ID_BackSideDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-
-
-            // title: Text('Identity Card'),
-            content: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 250,
-                  // color: Colors.black,
-                  child: Center(
-                    child: Column(children: [
-                      OurIdText(
-                        title: 'National Institute of Transport', fontWeight: FontWeight.bold, textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      OurIdText(
-                        title: 'Official Student Identification', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Image.asset(
-                        'images/IMG-20221231-WA0009_1.jpg',
-                        scale: 3,
-                      ),
-                    ]),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Perform printing action
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Print'),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  width: double.infinity,
-                  height: 250,
-                  // color: Colors.black,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      OurIdText(
-                        title: '1. This is an institute property and not transferable', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '1. This is an institute property and not transferable', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Name:', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '1. This is an institute property and not transferable', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Registration Number:', fontWeight: FontWeight.bold,  textAlign: TextAlign.start,
-                      ),
-                      OurIdText(
-                        title: '1. This is an institute property and not transferable', fontWeight: FontWeight.bold, textAlign: TextAlign.start,
-                      ),
-                      SizedBox(height: 10,),
-                      OurIdText(
-                        title: 'Signature:', fontWeight: FontWeight.bold,  textAlign: TextAlign.start,
-                      ),
-
-
-                      // Text('REG#: ${student_credentials['student_code']}'),
-                      // Text('Signature: ${student_credentials['signature']}'),
-                      // Text('EXP DATE: ${student_credentials['signature']}'),
-                    ],
+                  ElevatedButton(
+                    onPressed: () {
+                      // Perform cancel action
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancel'),
                   ),
-                ),
-              ],
-            ),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  // Perform printing action
-                  // Navigator.pop(context);
-                  setState(() {
-                    isFrontSide = !isFrontSide;
-                    print('+++++++++++++FRONT SIDE TURNED+++++++++++++++++++++');
-                    print(isFrontSide);
-                    print('++++++++++++++++++++++++++++++++++');
+                ],
+              );
+            })
+        : showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                // title: Text('Identity Card'),
+                content: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      // color: Colors.black,
+                      child: Center(
+                        child: Column(children: [
+                          OurIdText(
+                            title: 'National Institute of Transport',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          OurIdText(
+                            title: 'Official Student Identification',
+                            fontWeight: FontWeight.bold,
+                            textAlign: TextAlign.start,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Expanded(
+                            child: Image.asset(
+                              'images/qr_code_demo.jpeg',
+                              scale: 1.2,
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
+                    Container(
+                      width: double.infinity,
+                      height: 250,
+                      // color: Colors.black,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          OurIdText(
+                            title:
+                                '1. This is an institute property and not transferable',
+                            textAlign: TextAlign.start,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          OurIdText(
+                            title:
+                                '2. Use of this card is subject to the cardholder agreement',
+                            textAlign: TextAlign.start,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          OurIdText(
+                            title:
+                                '3. For lost or stolen card report to the nearest police station',
+                            textAlign: TextAlign.start,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          OurIdText(
+                            title:
+                                '4. This card must be returned to the Dean Office on terminating the course',
+                            textAlign: TextAlign.start,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
+                          OurIdText(
+                            title:
+                                '5. This card must be worn at all official times',
+                            textAlign: TextAlign.start,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 7,
+                          ),
 
-                  });
-                },
-                child: const Text('View Back'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Perform printing action
-                  Navigator.pop(context);
-                },
-                child: const Text('Print'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Perform cancel action
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        });
+                          OurIdText(
+                              title:
+                              '  Contact',
+                              textAlign: TextAlign.start,
+                              fontWeight: FontWeight.bold,
+                              fontsize: 12
+                          ),
+                          SizedBox(
+                            height: 1,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: OurIdText(
+                                  title:
+                                  'Rector \nP.O Box 705. Dar es Salaam \nTell.(255)2222400846 \nEmail: rector@nit.ac.tz \nWebsite: www.nit.ac.tz',
+                                  textAlign: TextAlign.start,
+                                  fontsize: 10.6,
+                            ),
+                              ),
+                               SizedBox(width: 15,),
+                              Column(
+                                children: [
+                                  OurIdText(
+                                      title:
+                                      '________________',
+                                      textAlign: TextAlign.start,
+                                      fontWeight: FontWeight.bold,
+                                      fontsize: 10
+                                  ),
+                                  OurIdText(
+                                      title:
+                                      'Rector Signature',
+                                      textAlign: TextAlign.start,
+                                      fontWeight: FontWeight.bold,
+                                      fontsize: 10
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+
+
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      if (isFrontSide == false) {
+                        isFrontSide = !isFrontSide;
+                        print('???????????????????? $isFrontSide ?????????');
+
+                        setState(() {
+                          Navigator.pop(context);
+                          _view_ID_Dialog(context, outside_boy);
+                          // _request_ID_Instructions_Dialog(context);
+                        });
+                      }
+                    },
+                    child: const Text('View Front'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Perform printing action
+                      // Navigator.pop(context);
+                    },
+                    child: const Text('Print'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Perform cancel action
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Cancel'),
+                  ),
+                ],
+              );
+            });
   }
 
   void _request_ID_Instructions_Dialog(BuildContext context) {
@@ -556,6 +632,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         });
   }
 
+  var outside_boy;
+
   ///FUNCTIONS CALLING API
   void fetchStudentInfo(BuildContext context) async {
     String studentCode = '${widget.username!.replaceAll('/', '_')}';
@@ -575,8 +653,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
     print(
         '\n \n \n -----------------------------------------------------------------');
-
-    _view_ID_FrontSideDialog(context, body);
+    outside_boy = body;
+    _view_ID_Dialog(context, body);
   }
 }
 
@@ -600,11 +678,8 @@ class OurIdText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       "$title",
-      style: TextStyle(
-        fontSize: fontsize,
-        fontWeight: fontWeight,
-        color: color
-      ),
+      style:
+          TextStyle(fontSize: fontsize, fontWeight: fontWeight, color: color,),
       textAlign: textAlign,
     );
   }
